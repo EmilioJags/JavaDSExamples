@@ -11,10 +11,5 @@ public class bucky {
 			if(str.startsWith("fu"))
 				System.out.println(str + " - starts with 'fu'");
 		}
-		
-		
-		
-		
 	}
-
 }
