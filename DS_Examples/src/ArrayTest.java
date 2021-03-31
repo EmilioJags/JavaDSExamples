@@ -17,7 +17,7 @@ public class ArrayTest {
 		
 		int[] ordArr = { 1, 2, 3, 4, 5, 7, 8, 9 };
 
-		int[] arr = { 5, 6,1,2, 3, 4,  8, 7 ,10};
+		int[] arr = { 5, 1,2, 3, 4,  8, 7 ,9,6,11};
 
 		int[] dupArr = { 5, 1, 2, 3, 4, 9, 8, 5, 7 };
 
@@ -40,23 +40,34 @@ public class ArrayTest {
 		stop();
 		for (Integer x : iList)
 			System.out.println(x);
-
+		
+		start();
+		findMissingNumber(arr);
+		stop();
+		
 	}
+	
+	
+	
+	public static void findMissingNumber(int[] arr)
+	{
+		int n = arr.length+1;
+		int sum = n * (n+1) / 2;
+		int toRest = 0;
+		
+		for(int i = 0; i < arr.length; i++)
+		{
+			toRest += arr[i];
+		}
+		sum = sum - toRest;
+		System.out.println("Value missing is: " + sum);
+	}
+	
 
 	public static void findMissingNumber(List<Integer> li) 
 	{
 		int size = li.size();
-		/*
-		if(size == 2)
-			if(li.get(0) == 1) {
-				System.out.println("Missing number = 2");
-				return;
-			}
-			else 
-			{
-				System.out.println("Missing number = 1");
-				return;
-			}*/
+		 
 		
 		if(li.get(0) != 1) {
 			System.out.println("Missing number = 1");
