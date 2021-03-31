@@ -19,7 +19,7 @@ public class ArrayTest {
 
 		int[] arr = { 5, 1,2, 3, 4,  8, 7 ,9,6,11};
 
-		int[] dupArr = { 5, 1, 2, 3, 4, 9, 8, 5, 7 };
+		int[] dupArr = {15, 5, 1, 2, 3, 4, 9, 8, 7, 10, 11, 12, 13,14,15 };
 
 		String[] words = { "funny", "funk", "furry", "chunk", "bruk", "truck", "muck", "dandeelion", "team", "commit" };
 
@@ -29,7 +29,7 @@ public class ArrayTest {
 
 		List<Integer> iList = new ArrayList<Integer>();
 
-		fullDebug=true;
+		fullDebug=false;
 		start();
 
 		for (int i = 0; i < arr.length; i++) {
@@ -45,6 +45,24 @@ public class ArrayTest {
 		findMissingNumber(arr);
 		stop();
 		
+		start();
+		findDuplicateNumber(dupArr);
+		stop();
+	}
+	
+	
+	public static void findDuplicateNumber(int[] arr)
+	{
+		for(int i = 0; i < arr.length; i++)
+			for(int j = i+1; j < arr.length; j++)
+			{
+				if(arr[i] == arr[j])
+				{
+					System.out.println("Duplicate is " + arr[i]);
+					return;
+				}
+			}
+		System.out.println("no duplicate");
 	}
 	
 	
