@@ -4,7 +4,7 @@ public class bucky {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String[] words = {"funk", "furry","chunk", "bruk", "truck","muck","dandeelion"};
+		String[] words = { "funny", "funk", "furry","chunk", "bruk", "truck","muck","dandeelion", "team","commit"};
 		
 		for(String str : words)
 		{
