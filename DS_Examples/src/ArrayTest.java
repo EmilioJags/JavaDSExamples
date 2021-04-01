@@ -17,7 +17,8 @@ public class ArrayTest {
 		
 		int[] ordArr = { 1, 2, 3, 4, 5, 7, 8, 9 };
 
-		int[] arr = { 5, 1,2, 3, 4,  8, 7 ,9,6,11};
+		// missing values 6, 9, 10, 13, 16
+		int[] arr = { 1,2, 3, 4,5,7,8,11,12,14,15,17};
 
 		int[] dupArr = {15, 5, 1, 2, 3, 4, 9, 8, 7, 10, 11, 12, 13,14,15 };
 
@@ -48,6 +49,39 @@ public class ArrayTest {
 		start();
 		findDuplicateNumber(dupArr);
 		stop();
+		
+		start();
+		findMissingNumbers(arr, 17);
+		stop();
+	}
+	
+	
+	public static void findMissingNumbers(int[] arr, int size)
+	{
+		int[] newArr = new int[size-arr.length];
+		boolean found = false;
+		int pos = 0;
+		for(int i = 1; i <= size; i++)
+		{
+			found = false;
+			for(int j = 0; j < arr.length; j++)
+			{
+				if(i == arr[j])
+				{
+					//System.out.println("Value " + i + " is in array");
+					found = true;
+					break;
+				}
+			}
+			if(found)
+				continue;
+			else
+			{
+				newArr[pos] = i; 
+				pos++;
+				System.out.println("One missing value is " + i);
+			}
+		}
 	}
 	
 	
