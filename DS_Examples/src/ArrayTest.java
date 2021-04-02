@@ -1,5 +1,10 @@
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Stack;
 
 public class ArrayTest {
 
@@ -15,12 +20,12 @@ public class ArrayTest {
 		int[] small = {2,3};
 		int[] small2 = {1};
 		
-		int[] ordArr = { 1, 2, 3, 4, 5, 7, 8, 9 };
-
+		int[] ordArr = { 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13};
+	
 		// missing values 6, 9, 10, 13, 16
 		int[] arr = { 1,2, 3, 4,5,7,8,11,12,14,15,17};
 
-		int[] dupArr = {15, 5, 1, 2, 3, 4, 9, 8, 7, 10, 11, 12, 13,14,15 };
+		int[] dupArr = {15,77, 5, 1,5, 2, 3, 4, 9, 8, 7, 10, 11, 12, 13,14,15,77 };
 
 		String[] words = { "funny", "funk", "furry", "chunk", "bruk", "truck", "muck", "dandeelion", "team", "commit" };
 
@@ -28,9 +33,45 @@ public class ArrayTest {
 
 		Character[] chars = { 'h', 's', 'b', 'd', 'q', 'a' };
 
+		int howMany = 200;
+		int[] bigSmall = new int[howMany];
+		
+ 
+		
+		start();
+		findMinMax(bigSmall);
+		stop();
+		
+		Map<String, String> map = new HashMap<>();
+		 
 		List<Integer> iList = new ArrayList<Integer>();
 
 		fullDebug=false;
+		
+		
+		Stack<Integer> st = new Stack<>();
+		
+		int[] revArr = new int[ordArr.length];
+		int j = 0;
+		for(int i = ordArr.length - 1; i >= 0; i--)
+		{
+			revArr[j] = ordArr[i];
+			j++;
+		}
+		
+		for(Integer x : revArr)
+			System.out.println("--" + x);
+		
+		
+		
+		for(int i = ordArr.length - 1; i >= 0; i--)	
+		{
+			st.add(ordArr[i]);
+		}
+		System.out.println("The stack = " + st);
+		System.out.println("Stack peek top of pile: " + st.peek()); 
+		
+		/*
 		start();
 
 		for (int i = 0; i < arr.length; i++) {
@@ -53,8 +94,52 @@ public class ArrayTest {
 		start();
 		findMissingNumbers(arr, 17);
 		stop();
+		*/
 	}
 	
+	public static void findMinMax(int[] arr)
+	{
+		int howMany = arr.length;
+		Random randy = new Random();
+		for(int i = 0; i < howMany; i++)
+		{
+			arr[i] = randy.nextInt(howMany+1);
+		}
+
+		Arrays.sort(arr);
+		for(int i = 0; i < howMany; i++)
+			System.out.println(arr[i]);
+		
+		int min, max;
+		
+		if(arr[0] < arr[1])
+		{
+			min = arr[0];
+			max = arr[1];	
+		}
+		else
+		{
+			min = arr[1];
+			max = arr[0];	
+		}
+		 
+		
+		for(int i = 2; i < howMany; i++)
+		{			
+			if(arr[i] < min)
+			{	
+				min = arr[i];
+				continue;
+			}
+			if(arr[i] > max) {
+				max = arr[i];
+				continue;
+			}			
+		}
+
+		System.out.println("Min: " + min);
+		System.out.println("Max: " + max);
+	}
 	
 	public static void findMissingNumbers(int[] arr, int size)
 	{
@@ -87,15 +172,19 @@ public class ArrayTest {
 	
 	public static void findDuplicateNumber(int[] arr)
 	{
+		boolean foundDups = false;
 		for(int i = 0; i < arr.length; i++)
-			for(int j = i+1; j < arr.length; j++)
-			{
+			for(int j = i + 1; j < arr.length; j++)
+			{ 
 				if(arr[i] == arr[j])
 				{
 					System.out.println("Duplicate is " + arr[i]);
-					return;
+					if(!foundDups)
+						foundDups = !foundDups;
 				}
 			}
+		if(foundDups)
+			return;
 		System.out.println("no duplicate");
 	}
 	
