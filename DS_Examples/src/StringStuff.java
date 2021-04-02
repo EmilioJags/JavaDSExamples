@@ -16,12 +16,7 @@ public class StringStuff {
 
 		String[][] anagramTestArray = { anagram1, anagram2 };
 
-		// System.out.println(anagramTestArray[0][1]);
-		// System.out.println(anagramTestArray[0].length);
-
-		// lo peladas
-
-		//
+		
 		start();
 		findAnagram(anagram1, anagram2);
 		stop();
@@ -39,6 +34,13 @@ public class StringStuff {
 		boolean notA = true;
 		for (int i = 0; i < arr1.length; i++) {
 
+			if(arr1[i].length() != arr2[i].length())
+			{
+
+				System.out.println(arr1[i] + " is not anagram of " + arr2[i] + " [size]"); 
+				continue;
+			}
+			
 			st = new ArrayList<>();
 			for (Character c : arr1[i].replaceAll(" ", "").toLowerCase().toCharArray())
 				st.add(c);
